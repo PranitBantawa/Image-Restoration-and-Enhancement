@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>	  
+	<title>Image Restoration and Enhancement</title>
+
+<script>
+	function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  section.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</head>
+<body>
+	<section id="nav">
+	<nav>
+		<div class="logo">
+			<div class="navbar-brand">
+				<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Alternative Text for Image" style="border-radius: 50%;" onclick="scrollToSection('hero')">
+			</div>
+			<div class="IRE_title" onclick="scrollToSection('hero')">
+			Image Restoration and Enhancement</div>
+		</div>
+		<a onclick="scrollToSection('hero')">Home</a>
+		<a onclick="scrollToSection('ourteam')">Our Team</a>
+		<a onclick="scrollToSection('about')">About</a>
+		<a onclick="scrollToSection('restore')">Try Now</a>
+	</nav></section>
+
+	<section id="hero">
+	<div class="hero">
+		<div class="hero-text">
+			<h1>Take Your Photo To The Next Level</h1>
+			<p>An Image Restoration and Enhancement web-based application to remove noise, blur and lens misfocus from an image.</p>
+			<button class="button" onclick="scrollToSection('restore')">Restore Image Now</button>
+		</div>
+	</div></section>
+
+	  <hr><br>
+
+		
+	  <div class="image-section-1" style="align-items: left;">
+	<img src="{{ url_for('static', filename='images/home_img-1.PNG') }}" alt="Alternative Text for Image">
+		</div><hr>
+
+<hr>
+
+	  <div class="image-section-1" >
+		<img src="{{ url_for('static', filename='images/home_img-2.PNG') }}" alt="Alternative Text for Image">
+		</div><hr>
+
+	  <div class="image-section">
+		<h1 align="center"> Three Simple Steps To Restore Images Online.</h1>
+		<img src="{{ url_for('static', filename='images/howtouse.png') }}" alt="Alternative Text for Image">
+		</div><hr>
+		<section id="restore">
+	</br><h1 align="center"> Restore Your Images Online with Ease</h1>
+
+	<center>
+		<button id="RestoreNow" onclick="redirectToIndex()" class="button">Restore Now</button>
+	  </center>
+	  
+	  <script>
+		function redirectToIndex() {
+		  const button = document.getElementById('RestoreNow');
+		  const spinner = document.createElement('span');
+		  spinner.classList.add('spinner');
+		  button.innerText = 'Loading...';
+		  button.disabled = true;
+		  button.prepend(spinner);
+	  
+		  // Simulate a delay of 2 seconds before redirecting
+		  setTimeout(function() {
+			button.removeChild(spinner);
+			button.innerText = 'Restore Now';
+			button.disabled = false;
+			window.location.href = "{{ url_for('index') }}";
+		  }, 2000);
+		}
+	  </script>
+	  
+	
+		</br></br></br></br>
+		<h1 align="center"> Our Development Team</h1></br>
+
+ <section class="ourteam" id="ourteam">
+	<div class="avatar">
+	  <img src="{{ url_for('static', filename='images/avatar1.png') }}" alt="Profile picture 1">
+	  <h3>Pranit Bantawa</h3>
+	</div>
+	<div class="avatar">
+	  <img src="{{ url_for('static', filename='images/avatar2.png') }}" alt="Profile picture 2">
+	  <h3>Vijay Prashad </h3>
+	</div>
+	<div class="avatar">
+	  <img src="{{ url_for('static', filename='images/avatar3.png') }}" alt="Profile picture 3">
+	  <h3>Ranjan Dekka</h3>
+	</div>
+  </section>
+  
+<style>
+
+	
+body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+		}
+
+		nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 99%;
+			background-color: #6C63FF;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			padding: 10px;
+			z-index: 1;
+		}
+
+		nav .logo {
+			margin-right: auto;
+			font-size: 1.5em;
+			color: white;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+
+		nav a {
+			font-size: 200;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-weight: bold;
+			transition: background-color 0.3s ease;
+		}
+
+		nav a:hover {
+			background-color: #5B54DA;
+			cursor: pointer;
+		}
+		.IRE_title {
+				cursor: pointer;
+			}
+
+		.hero {
+			background: url("https://d33wubrfki0l68.cloudfront.net/acef95275f025d0a1b65220faf3954f8acc97d98/c2fa6/images/blog/old-photos-banner.jpg") no-repeat center center fixed;
+			background-size: 100%;
+			height: calc(100vh - 60px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-position: fixed;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+			padding: 0 20px;
+		}
+
+		.hero-text {
+			text-align: center;
+			background-color: rgba(0,0,0,0.5);
+			padding: 20px;
+			border-radius: 10px;
+			max-width: 80%;
+			margin: auto;
+		}
+
+		.hero h1 {
+			color: white;
+			font-size: 4em;
+			text-align: center;
+			text-shadow: 2px 2px 4px #000000;
+			margin: 0;
+			line-height: 1.2;
+			font-weight: bold;
+		}
+
+		.hero p {
+			color: white;
+			font-size: 1.5em;
+			margin: 20px 0 0;
+			line-height: 1.5;
+		}
+
+		.button {
+			background-color: #6C63FF;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			border-radius: 10px;
+			margin-top: 20px;
+			cursor: pointer;
+			font-weight: bold;
+			transition: background-color 0.3s ease;
+		}
+		.button:hover {
+			background-color: #5B54DA;
+		}
+		
+		.image-section-1 img {
+				width: 90%;
+				display: block; /* Ensures the image is a block element */
+  				margin: 0 auto; /* Sets the margin to 0 on top/bottom and auto on left/right */
+			}
+
+		.image-section img {
+				width: 75%;
+				display: block; /* Ensures the image is a block element */
+  				margin: 0 auto; /* Sets the margin to 0 on top/bottom and auto on left/right */
+			}
+
+		@media screen and (max-width: 768px) {
+			.hero h1 {
+				font-size: 2.5rem;
+			}
+
+			.hero p {
+				font-size: 1em;
+			}
+			img {
+				width: 100%;
+			}
+			.IRE_title {
+				display: none;
+			}
+		}
+	.navbar-brand {
+		display: flex;
+
+  		width: 50px;
+  		height: auto; 
+	}
+
+		.spinner {
+	border: 4px solid #3498db;
+	border-top-color: rgba(255, 255, 255, 0.6);
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	animation: spin 1s linear infinite;
+	display: inline-block;
+	margin-right: 10px;
+	}
+
+	@keyframes spin {
+	to { transform: rotate(360deg); }
+	}
+
+	.footer {
+  	color: #fff;
+  	padding: 50px 0;
+	}
+
+	.footer h5 {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	}
+
+	.footer p {
+	font-size: 14px;
+	margin-bottom: 10px;
+	}
+
+	.footer .social-links a {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	color: #fff;
+	background-color: #4d4d4d;
+	text-align: center;
+	line-height: 40px;
+	transition: all 0.3s ease-in-out;
+	margin-right: 10px;
+	}
+
+	.footer .social-links a:hover {
+	background-color: #fff;
+	color: #0066CC;
+	}
+	.footer .col-md-4 {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+
+
+
+	
+	.ourteam {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.avatar h3 {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+</style>
+
+
+
+
+<footer class="footer" style="background-color: #0066CC" id="about">
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-4">
+		  <h5>About Us</h5>
+		  <p>We are a company that specializes in Image Restoration and Enhancement services. Our mission is to provide high-quality images from degraded or defect images. </p>
+		</div>
+		<div class="col-md-4">
+		  <h5>Contact Us</h5>
+		  <p><i class="fas fa-map-marker-alt"></i> Assam Don Bosco University, Azara, </br>Guwahati, Assam,</br> India</p>
+		  <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+		  <p><i class="fas fa-envelope"></i> www.dbuniversity.ac.in</p>
+		</div>
+		<div class="col-md-4">
+		  <h5>Connect with Us</h5>
+		  <div class="social-links">
+			<a href="#"><i class="fab fa-facebook-f"></i></a>
+			<a href="#"><i class="fab fa-twitter"></i></a>
+			<a href="#"><i class="fab fa-linkedin-in"></i></a>
+			<a href="#"><i class="fab fa-instagram"></i></a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </footer>
+  
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+
+
+		*****HOW TO RUN******
+Run main.py file in terminal by: python main.py
+
+
+
+
+Hello,
+I am PRANIT BANTAWA from Assam Don Bosco University, Guwahati, India.
+My project "Image Restoration and Enhancement" is developed using Deep Learning technique.
+I have used GFPGAN deep learning model to enhance images.
+
+

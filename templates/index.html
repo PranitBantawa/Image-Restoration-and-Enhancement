@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Restoration and Enhancement</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+<br><br><br>
+<section id="nav">
+    <nav>
+        <div class="logo">
+            <div class="navbar-brand">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Alternative Text for Image" style="border-radius: 50%;" onclick="redirectToHome()">
+            </div>
+            <div class="IRE_title" onclick="redirectToHome()">Image Restoration and Enhancement</div>
+
+            <script>
+                function redirectToHome() {
+                    window.location.href = "{{ url_for('home') }}";
+                }
+            </script>
+                    </div>
+        <a onclick="redirectToHome()">Home</a>
+        <a onclick="redirectToHome()">Our Team</a>
+        <a onclick="redirectToHome()">About</a>
+        <a onclick="redirectToIndex()">Try Now</a>
+    </nav>
+</section>
+<br><br><br><br><br><hr>
+<h1 align="center">Image Restoration and Enhancement</h1>
+<center>
+    {% if filename %}
+        <div style="display: inline-block">
+            <h2>Original Image</h2>
+            <img src="{{ url_for('static', filename='images/' + filename) }}" style="width:400px">
+        </div>
+    {% endif %}
+    
+    {% if restored_img_url %}
+        <div style="display: inline-block">
+            <h2>Restored Image</h2>
+            <a href="{{ restored_img_url }}" target="_blank"><img src="{{ restored_img_url }}" style="width:400px"></a>
+        </div>
+    {% endif %}
+    
+    <form method="post" action="/" enctype="multipart/form-data">
+        <p>
+            <input type="file" name="file" autocomplete="off" required>
+        </p>
+        <p>
+            <input type="submit" value="Submit!">
+            <button onclick="downloadRestoredImage()" type="button" class="button">Download Image</button>
+        </p>
+    </form>
+    
+    <script>
+        function downloadRestoredImage() {
+            var link = document.createElement("a");
+            link.href = "{{ restored_img_url }}";
+            link.download = "restored_image.jpg";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</center>
+
+<br><br><br><br><br><br><hr>
+
+<style>
+	.image-section-1 img {
+    width: 90%;
+    display: block; /* Ensures the image is a block element */
+    margin: 0 auto; /* Sets the margin to 0 on top/bottom and auto on left/right */}
+</style>
+
+
+    <div class="image-section-1">
+        <img src="{{ url_for('static', filename='images/home-img-3.PNG') }}" alt="Alternative Text for Image">
+          </div><hr>
+
+
+<div class="image-section-1">
+<img src="{{ url_for('static', filename='images/home_img-1.PNG') }}" alt="Alternative Text for Image">
+  </div><hr>
+
+<hr>
+
+<div class="image-section-1" >
+  <img src="{{ url_for('static', filename='images/home_img-2.PNG') }}" alt="Alternative Text for Image">
+  </div><hr>
+  <section id="restore">
+</br><h1 align="center"> Restore Your Images Online with Ease</h1>
+
+<center>
+  <button id="RestoreNow" onclick="redirectToIndex()" class="button">Restore Now</button>
+</center>
+
+<script>
+  function redirectToIndex() {
+    const button = document.getElementById('RestoreNow');
+    const spinner = document.createElement('span');
+    spinner.classList.add('spinner');
+    button.innerText = 'Loading...';
+    button.disabled = true;
+    button.prepend(spinner);
+
+    // Simulate a delay of 2 seconds before redirecting
+    setTimeout(function() {
+      button.removeChild(spinner);
+      button.innerText = 'Restore Now';
+      button.disabled = false;
+      window.location.href = "{{ url_for('index') }}";
+    }, 2000);
+  }
+</script>
+
+
+<div class="image-section">
+    <h1 align="center"> Three Simple Steps To Restore Images Online.</h1>
+    <img src="{{ url_for('static', filename='images/howtouse.png') }}" alt="Alternative Text for Image">
+    </div><hr>
+  
+  </br></br></br></br>
+  <h1 align="center"> Our Development Team</h1></br>
+
+<section class="ourteam" id="ourteam">
+<div class="avatar">
+<img src="{{ url_for('static', filename='images/avatar1.png') }}" alt="Profile picture 1">
+<h3>Pranit Bantawa</h3>
+</div>
+<div class="avatar">
+<img src="{{ url_for('static', filename='images/avatar2.png') }}" alt="Profile picture 2">
+<h3>Vijay Prashad </h3>
+</div>
+<div class="avatar">
+<img src="{{ url_for('static', filename='images/avatar3.png') }}" alt="Profile picture 3">
+<h3>Ranjan Dekka</h3>
+</div>
+</section>
+
+
+    <footer class="footer" style="background-color: #0066CC" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"><br><br>
+                    <h5>About Us</h5>
+                    <p>We are a company that specializes in Image Restoration and Enhancement services. Our mission is to provide high-quality images from degraded or defective images.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Assam Don Bosco University, Azara,<br>Guwahati, Assam,<br>India</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> www.dbuniversity.ac.in</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect with Us</h5>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content" align="center">
+            <div class="footer-left">
+                <p>&copy; 2023 Image Restoration and Enhancement. All rights reserved.</p>
+            </div>
+            <div class="footer-right">
+                <p>Contact: imagerestorationandenhancement@email.com</p>
+            </div>
+        </div>
+        <br><br>
+    </footer>
+</center>
+<style>
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #6C63FF;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    z-index: 1;
+}
+
+nav .logo {
+    margin-right: auto;
+    font-size: 1.5em;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav a {
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #5B54DA;
+    cursor: pointer;
+}
+
+.hero {
+    background: url("https://d33wubrfki0l68.cloudfront.net/acef95275f025d0a1b65220faf3954f8acc97d98/c2fa6/images/blog/old-photos-banner.jpg") no-repeat center center fixed;
+    background-size: 100%;
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: fixed;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 0 20px;
+}
+
+.hero-text {
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    margin: auto;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 4em;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000000;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.hero p {
+    color: white;
+    font-size: 1.5em;
+    margin: 20px 0 0;
+    line-height: 1.5;
+}
+
+.button {
+    background-color: #6C63FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #5B54DA;
+}
+
+.image-section img {
+    width: 75%;
+    display: block;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+    img {
+        width: 100%;
+    }
+    .IRE_title {
+        display: none;
+    }
+}
+
+.navbar-brand {
+    display: flex;
+    width: 50px;
+    height: auto;
+}
+
+.footer {
+    color: #fff;
+    padding: 50px 0;
+}
+
+.footer h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer .social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #4d4d4d;
+    text-align: center;
+    line-height: 40px;
+    transition: all 0.3s ease-in-out;
+    margin-right: 10px;
+}
+
+.footer .social-links a:hover {
+    background-color: #fff;
+    color: #0066CC;
+}
+
+.footer .col-md-4 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.ourteam {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.avatar h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+input {
+    background-color: #6C63FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+input:hover {
+    background-color: #8683bf;
+}
+
+</style>
+
+
+</body>
+</html>
