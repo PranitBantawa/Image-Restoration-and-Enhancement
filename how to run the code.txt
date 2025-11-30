@@ -1,7 +1,14 @@
 
 
 		*****HOW TO RUN******
-Run main.py file in terminal by: python main.py
+Python 3.10.11 (stable) is required.
+
+Steps to run the code (env)
+1. Create the virtual environment(venv):	py -3.10 -m venv venv
+2. ✔ Install packages (Flask, Replicate, dotenv):	pip install flask replicate python-dotenv
+
+3. 👉 Activate your virtual environment:	venv\Scripts\activate
+4. Run main.py file in terminal by: python main.py
 
 
 
@@ -10,5 +17,6 @@ Hello,
 I am PRANIT BANTAWA from Assam Don Bosco University, Guwahati, India.
 My project "Image Restoration and Enhancement" is developed using Deep Learning technique.
 I have used GFPGAN deep learning model to enhance images.
+
 
 
